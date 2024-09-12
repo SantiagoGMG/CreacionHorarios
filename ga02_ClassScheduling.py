@@ -1,11 +1,13 @@
 import prettytable as prettytable
 import random as rnd
-POPULATION_SIZE = 2
+POPULATION_SIZE = 5
 NUMB_OF_ELITE_SCHEDULES = 1
 TOURNAMENT_SELECTION_SIZE = 3
 MUTATION_RATE = 0.1
 class Data:
-    ROOMS = [["R1",40], ["R2",40], ["R3",40],["R4",40], ["R5",40], ["R6",40]]
+    #salones
+    ROOMS = [["R1",40]]
+    #horas del dia
     MEETING_TIMES = [["MT1", "Lunes 07:00 - 9:00"],
                      ["MT2", "Lunes 9:00 - 11:00"],
                      ["MT3", "Lunes 11:00 - 13:00"],
@@ -38,7 +40,7 @@ class Data:
                      ["MT29", "Viernes 15:00 - 17:00"],
                      ["MT30", "Viernes 17:00 - 19:00"],
     ]
-    
+    #maestros
     INSTRUCTORS = [["I1", "Dr Joel"],
                    ["I2", "Mr. Julio"],
                    ["I3", "Dr Hector"],
@@ -56,16 +58,25 @@ class Data:
             self._meetingTimes.append(MeetingTime(self.MEETING_TIMES[i][0], self.MEETING_TIMES[i][1]))
         for i in range(0, len(self.INSTRUCTORS)):
             self._instructors.append(Instructor(self.INSTRUCTORS[i][0], self.INSTRUCTORS[i][1]))
-        #Siglas, Semestre , grupo    
-        course1 = Course("ITS_1_A", "Edificio B", [self._instructors[0], self._instructors[1],self._instructors[2],self._instructors[5]], 40)
-        course2 = Course("ISC_1_A", "Edificio B", [self._instructors[0], self._instructors[1], self._instructors[4], self._instructors[5]], 40)
-        course3 = Course("ISC_1_B", "Edificio B", [self._instructors[0], self._instructors[1], self._instructors[2], self._instructors[5]], 40)
+        #Materia -> nombre,edificio, maestro que la pueden dar, max de alumnos   
+        course1 = Course("Elaboracion de Textos", "Edificio B", [self._instructors[0], self._instructors[1],self._instructors[2],self._instructors[5]], 40)
+        course2 = Course("Ingles 1","Edificio B", [self._instructors[0], self._instructors[1], self._instructors[4], self._instructors[5]], 40)
+        course3 = Course("Algebra y Geometria", "Edificio B", [self._instructors[0], self._instructors[1], self._instructors[2], self._instructors[5]], 40)
+        course4 = Course("Metodologia","Edificio B", [self._instructors[0], self._instructors[1], self._instructors[4], self._instructors[5]], 40)
+        course5 = Course("Fundamentos de programacion","Edificio B", [self._instructors[0], self._instructors[1], self._instructors[4], self._instructors[5]], 40)
+        course6 = Course("Introduccion a la ingenieria","Edificio B", [self._instructors[0], self._instructors[1], self._instructors[4], self._instructors[5]], 40)
+        course7 = Course("Quimica","Edificio B", [self._instructors[0], self._instructors[1], self._instructors[4], self._instructors[5]], 40)
         #course4 = Course("ITS_3_A", "Edificio C", [self._instructors[2], self._instructors[3]], 40)
         #course5 = Course("ISC_3_A", "Edificio C", [self._instructors[3]], 40)
         #course6 = Course("ISC_3_B", "Edificio C", [self._instructors[0], self._instructors[2]], 40)
         #course7 = Course("C7", "Edificio C", [self._instructors[1], self._instructors[3]], 40)
-        self._courses = [course1, course2, course3]#, course4, course5, course6] #course7
+        
+        #Se crean los cursos
+        self._courses = [course1, course2, course3,course4, course5, course6,course7]#, course4, course5, course6] #course7
+        # grupo con los cursos que se dan
+        dept0 = Department("ITS_1_A", [course1,course1, course2, course3,course4, course5, course6,course7])
         #Compartidas 1ero
+        
         dept1 = Department("Elaboracion de Textos", [course1, course1])#,course3])
         dept2 = Department("Ingles 1", [course1, course1])#, course3])
         #ITS1 A
@@ -97,8 +108,8 @@ class Data:
         #dept21 = Department("Contabilidad", [course5, course6])
         #dept22 = Department("Lenguaje de programacion 2", [course5, course6])
         #dept23 = Department("Matematicas para la computacion", [course5, course6])
-
-        self._depts = [dept1, dept2, dept3,dept4, dept5,dept6, dept7]#,dept8, dept9, dept10,dept11, dept12]
+        self._depts = [dept0]
+        #self._depts = [dept1, dept2, dept3,dept4, dept5,dept6, dept7]#,dept8, dept9, dept10,dept11, dept12]
                       # dept13, dept14, dept15,dept16, dept17,dept18, dept19,dept20, dept21, dept22,dept23]
         self._numberOfClasses = 0
         for i in range(0, len(self._depts)):
@@ -301,6 +312,7 @@ class DisplayMgr:
         print(availableRoomsTable)
     def print_meeting_times(self):
         availableMeetingTimeTable = prettytable.PrettyTable(['id', 'Meeting Time'])
+        #esta variable es interesante no se que hace
         meetingTimes = data.get_meetingTimes()
         for i in range(0, len(meetingTimes)):
             availableMeetingTimeTable.add_row([meetingTimes[i].get_id(), meetingTimes[i].get_time()])
