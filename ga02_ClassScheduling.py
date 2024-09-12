@@ -1,6 +1,6 @@
 import prettytable as prettytable
 import random as rnd
-POPULATION_SIZE = 5
+POPULATION_SIZE = 9
 NUMB_OF_ELITE_SCHEDULES = 1
 TOURNAMENT_SELECTION_SIZE = 3
 MUTATION_RATE = 0.1
@@ -8,37 +8,37 @@ class Data:
     #salones
     ROOMS = [["R1",40]]
     #horas del dia
-    MEETING_TIMES = [["MT1", "Lunes 07:00 - 9:00"],
-                     ["MT2", "Lunes 9:00 - 11:00"],
-                     ["MT3", "Lunes 11:00 - 13:00"],
-                     ["MT4", "Lunes 13:00 - 15:00"],
-                     ["MT5", "Lunes 15:00 - 17:00"],
-                     ["MT6", "Lunes 17:00 - 19:00"],
-                     ["MT7", "Martes 07:00 - 9:00"],
-                     ["MT8", "Martes 9:00 - 11:00"],
-                     ["MT9", "Martes 11:00 - 13:00"],
-                     ["MT10", "Martes 13:00 - 15:00"],
-                     ["MT11", "Martes 15:00 - 17:00"],
-                     ["MT12", "Martes 17:00 - 19:00"],
-                     ["MT12", "Martes 17:00 - 19:00"],
-                     ["MT13", "Miercoles 07:00 - 9:00"],
-                     ["MT14", "Miercoles 9:00 - 11:00"],
-                     ["MT15", "Miercoles 11:00 - 13:00"],
-                     ["MT16", "Miercoles 13:00 - 15:00"],
-                     ["MT17", "Miercoles 15:00 - 17:00"],
-                     ["MT18", "Miercoles 17:00 - 19:00"],
-                     ["MT19", "Jueves 07:00 - 9:00"],
-                     ["MT20", "Jueves 9:00 - 11:00"],
-                     ["MT21", "Jueves 11:00 - 13:00"],
-                     ["MT22", "Jueves 13:00 - 15:00"],
-                     ["MT23", "Jueves 15:00 - 17:00"],
-                     ["MT24", "Jueves 17:00 - 19:00"],
-                     ["MT25", "Viernes 07:00 - 9:00"],
-                     ["MT26", "Viernes 9:00 - 11:00"],
-                     ["MT27", "Viernes 11:00 - 13:00"],
-                     ["MT28", "Viernes 13:00 - 15:00"],
-                     ["MT29", "Viernes 15:00 - 17:00"],
-                     ["MT30", "Viernes 17:00 - 19:00"],
+    MEETING_TIMES = [["1", "Lunes 07:00 - 9:00"],
+                     ["1", "Lunes 9:00 - 11:00"],
+                     ["1", "Lunes 11:00 - 13:00"],
+                     ["1", "Lunes 13:00 - 15:00"],
+                     ["1", "Lunes 15:00 - 17:00"],
+                     ["1", "Lunes 17:00 - 19:00"],
+                     ["2", "Martes 07:00 - 9:00"],
+                     ["2", "Martes 9:00 - 11:00"],
+                     ["2", "Martes 11:00 - 13:00"],
+                     ["2", "Martes 13:00 - 15:00"],
+                     ["2", "Martes 15:00 - 17:00"],
+                     ["2", "Martes 17:00 - 19:00"],
+                     ["2", "Martes 17:00 - 19:00"],
+                     ["3", "Miercoles 07:00 - 9:00"],
+                     ["3", "Miercoles 9:00 - 11:00"],
+                     ["3", "Miercoles 11:00 - 13:00"],
+                     ["3", "Miercoles 13:00 - 15:00"],
+                     ["3", "Miercoles 15:00 - 17:00"],
+                     ["3", "Miercoles 17:00 - 19:00"],
+                     ["4", "Jueves 07:00 - 9:00"],
+                     ["4", "Jueves 9:00 - 11:00"],
+                     ["4", "Jueves 11:00 - 13:00"],
+                     ["4", "Jueves 13:00 - 15:00"],
+                     ["4", "Jueves 15:00 - 17:00"],
+                     ["4", "Jueves 17:00 - 19:00"],
+                     ["5", "Viernes 07:00 - 9:00"],
+                     ["5", "Viernes 9:00 - 11:00"],
+                     ["5", "Viernes 11:00 - 13:00"],
+                     ["5", "Viernes 13:00 - 15:00"],
+                     ["5", "Viernes 15:00 - 17:00"],
+                     ["5", "Viernes 17:00 - 19:00"],
     ]
     #maestros
     INSTRUCTORS = [["I1", "Dr Joel"],
@@ -49,7 +49,8 @@ class Data:
                    ["I6", "Chito"],
                    ["I7", "Boris"],
                    ["I8", "Coco"],
-                   ["I9", "Chadble"]]
+                   ["I9", "Chadble"],
+                   ["I10","Buscando"]]
     def __init__(self):
         self._rooms = []; self._meetingTimes = []; self._instructors = []
         for i in range(0, len(self.ROOMS)):
@@ -59,13 +60,13 @@ class Data:
         for i in range(0, len(self.INSTRUCTORS)):
             self._instructors.append(Instructor(self.INSTRUCTORS[i][0], self.INSTRUCTORS[i][1]))
         #Materia -> nombre,edificio, maestro que la pueden dar, max de alumnos   
-        course1 = Course("Elaboracion de Textos", "Edificio B", [self._instructors[0], self._instructors[1],self._instructors[2],self._instructors[5]], 40)
-        course2 = Course("Ingles 1","Edificio B", [self._instructors[0], self._instructors[1], self._instructors[4], self._instructors[5]], 40)
-        course3 = Course("Algebra y Geometria", "Edificio B", [self._instructors[0], self._instructors[1], self._instructors[2], self._instructors[5]], 40)
-        course4 = Course("Metodologia","Edificio B", [self._instructors[0], self._instructors[1], self._instructors[4], self._instructors[5]], 40)
-        course5 = Course("Fundamentos de programacion","Edificio B", [self._instructors[0], self._instructors[1], self._instructors[4], self._instructors[5]], 40)
-        course6 = Course("Introduccion a la ingenieria","Edificio B", [self._instructors[0], self._instructors[1], self._instructors[4], self._instructors[5]], 40)
-        course7 = Course("Quimica","Edificio B", [self._instructors[0], self._instructors[1], self._instructors[4], self._instructors[5]], 40)
+        course1 = Course("Elaboracion de Textos", "Edificio B", [self._instructors[1]], 40)
+        course2 = Course("Ingles 1","Edificio B", [self._instructors[7]], 40)
+        course3 = Course("Algebra y Geometria", "Edificio B", [self._instructors[5]], 40)
+        course4 = Course("Metodologia","Edificio B", [self._instructors[1]], 40)
+        course5 = Course("Fundamentos de programacion","Edificio B", [self._instructors[2]], 40)
+        course6 = Course("Introduccion a la ingenieria","Edificio B", [self._instructors[9]], 40)
+        course7 = Course("Quimica","Edificio B", [self._instructors[3]], 40)
         #course4 = Course("ITS_3_A", "Edificio C", [self._instructors[2], self._instructors[3]], 40)
         #course5 = Course("ISC_3_A", "Edificio C", [self._instructors[3]], 40)
         #course6 = Course("ISC_3_B", "Edificio C", [self._instructors[0], self._instructors[2]], 40)
@@ -74,9 +75,8 @@ class Data:
         #Se crean los cursos
         self._courses = [course1, course2, course3,course4, course5, course6,course7]#, course4, course5, course6] #course7
         # grupo con los cursos que se dan
-        dept0 = Department("ITS_1_A", [course1,course1, course2, course3,course4, course5, course6,course7])
-        #Compartidas 1ero
-        
+        dept0 = Department("ITS_1_A", [course1,course1, course2,course2, course3,course3,course3, course4,course4, course5,course5, course6,course6, course7,course7])
+        #Compartidas 1ero 
         dept1 = Department("Elaboracion de Textos", [course1, course1])#,course3])
         dept2 = Department("Ingles 1", [course1, course1])#, course3])
         #ITS1 A
@@ -152,16 +152,28 @@ class Schedule:
     def calculate_fitness(self):
         self._numbOfConflicts = 0
         classes = self.get_classes()
-        for i in range(0, len(classes)):
-            if (classes[i].get_room().get_seatingCapacity() < classes[i].get_course().get_maxNumbOfStudents()):
+
+        for i in range(len(classes)):
+            # Verifica si la capacidad del aula es menor que el número máximo de estudiantes del curso
+            if classes[i].get_room().get_seatingCapacity() < classes[i].get_course().get_maxNumbOfStudents():
                 self._numbOfConflicts += 1
-            for j in range(0, len(classes)):
-                if (j >= i):
-                    if (classes[i].get_meetingTime() == classes[j].get_meetingTime() and
-                    classes[i].get_id() != classes[j].get_id()):
-                        if (classes[i].get_room() == classes[j].get_room()): self._numbOfConflicts += 1
-                        if (classes[i].get_instructor() == classes[j].get_instructor()): self._numbOfConflicts += 1
-        return 1 / ((1.0*self._numbOfConflicts + 1))
+
+            for j in range(i + 1, len(classes)):
+                # Verifica si el horario y el aula coinciden
+                if classes[i].get_meetingTime() == classes[j].get_meetingTime() and classes[i].get_id() != classes[j].get_id():
+                    if classes[i].get_room() == classes[j].get_room():
+                        self._numbOfConflicts += 1
+                    # Verifica si el instructor coincide
+                    if classes[i].get_instructor() == classes[j].get_instructor():
+                        self._numbOfConflicts += 1
+
+                # **Nueva Verificación: Mismo Curso en el Mismo Día**
+                if classes[i].get_course() == classes[j].get_course():
+                    if classes[i].get_meetingTime().get_id() == classes[j].get_meetingTime().get_id():
+                        self._numbOfConflicts += 1
+
+        return 1 / ((1.0 * self._numbOfConflicts + 1))
+
     def __str__(self):
         returnValue = ""
         for i in range(0, len(self._classes)-1):
