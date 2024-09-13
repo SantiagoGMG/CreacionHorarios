@@ -10,61 +10,77 @@
 </head>
 
 <body>
+
+    <div class="Title">
+        <h1>Sistema de Horarios</h1>
+        <p>Este es un sistema de horarios para la Universidad Autonoma de Campeche</p>
+    </div>
     <div class="container">
         <div class="form">
-            <h1>Agregar un nuevo salón</h1>
+            <h1>Agregar salón</h1>
             <form action="{{ url_for('submit') }}" method="POST">
-                <label for="room_number">Número del salón:</label>
-                <input type="text" id="room_number" name="room_number" required><br><br>
+                <label for="room_number">ID del Grupo:</label>
+                <input type="text" id="room_number" name="room_number" placeholder="R1" required><br><br>
 
-                <label for="room_name">Nombre del salón:</label>
-                <input type="text" id="room_name" name="room_name" required><br><br>
+                <label for="room_name">Grupo:</label>
+                <input type="text" id="room_name" name="room_name" placeholder="ITS-1-A" required><br><br>
 
                 <input type="submit" value="Agregar salón">
             </form>
 
+        </div>
+        <div class="form">
+            <h1>Agregar horario</h1>
+            <form action="{{ url_for('submit') }}" method="POST">
+                <label for="room_id">ID del salón:</label>
+                <input type="text" id="room_id" name="room_id" placeholder="1" required><br><br>
+
+                <label for="meeting">Horario:</label>
+                <input type="text" id="meeting" name="meeting" placeholder="Lunes 07:00 - 9:00" required><br><br>
+
+                <input type="submit" value="Agregar salón">
+            </form>
+
+        </div>
+        <div class="form">
+            <h1>Agregar instructor</h1>
+            <form action="{{ url_for('submit') }}" method="POST">
+                <label for="id">ID del instructor:</label>
+                <input type="text" id="id" name="id" placeholder="I1" required><br><br>
+
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" placeholder="Dr Justino" required><br><br>
+
+                <input type="submit" value="Agregar instructor">
+            </form>
+
+        </div>
+    </div>
+
+    <div class="container-list">
+        <div class="list">
             <h2>Salones registrados</h2>
             <ul>
                 {% for room in rooms %}
-                <li>{{ room['room_number'] }} - {{ room['room_name'] }}</li>
+                <li>ID: {{ room['room_number'] }} - Grupo: {{ room['room_name'] }}</li>
                 {% else %}
                 <li>No hay salones registrados.</li>
                 {% endfor %}
             </ul>
         </div>
-        <div class="form">
-            <h1>Agregar un nuevo horario</h1>
-            <form action="{{ url_for('submit') }}" method="POST">
-                <label for="room_id">Número del salón:</label>
-                <input type="text" id="room_id" name="room_id" required><br><br>
 
-                <label for="meeting">Nombre del salón:</label>
-                <input type="text" id="meeting" name="meeting" required><br><br>
-
-                <input type="submit" value="Agregar salón">
-            </form>
-
+        <div class="list">
             <h2>Horarios registrados</h2>
             <ul>
                 {% for meeting in meeting_times %}
-                <li>Salón ID: {{ meeting['room_id'] }} - Reunión: {{ meeting['meeting'] }}</li>
+                <li>ID: {{ meeting['room_id'] }} - Horario: {{ meeting['meeting'] }}</li>
                 {% else %}
                 <li>No hay reuniones registradas.</li>
                 {% endfor %}
             </ul>
         </div>
-        <div class="form">
-            <h1>Agregar un nuevo instructor</h1>
-            <form action="{{ url_for('submit') }}" method="POST">
-                <label for="id">Id del instructor:</label>
-                <input type="text" id="id" name="id" required><br><br>
-
-                <label for="name">Nombre:</label>
-                <input type="text" id="name" name="name" required><br><br>
-
-                <input type="submit" value="Agregar instructor">
-            </form>
-
+        
+        <div class="list">
             <h2>Instructores registrados</h2>
             <ul>
                 {% for instructor in instructors %}
@@ -74,6 +90,8 @@
                 {% endfor %}
             </ul>
         </div>
+
+
     </div>
 </body>
 

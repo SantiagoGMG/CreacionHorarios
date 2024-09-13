@@ -1,4 +1,127 @@
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.Title h1{
+  margin: 3vh;
+  font-size: 40px;
+  margin-bottom: 20px;
+  color: #002065;
+}
+
+.Title p{
+  margin: 3vh;
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
 .form {
-  float: left;
+  display: inline-block;
+  width: 400px;
+  background: #24303c;
+  padding: 2rem;
+  margin: auto;
+  margin: 3vh;
+  border-radius: 4px;
+  font-family: 'calibri';
+  color: white;
+  box-shadow: 7px 13px 37px #000;
+  vertical-align: text-top;
+}
+
+.form input{
+  width: 100%;
+  background: #24303c;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  border: 1px solid #1f53c5;
+  font-family: 'calibri';
+  font-size: 18px;
+  color: white;
+}
+
+.form input::placeholder {
+  color: white; 
+  font-family: 'calibri';
+}
+
+.form .button{
+  width: 100%;
+  background: #1f53c5;
+  border: none;
+  color: white;
+  margin: 4px 0;
+  font-size: 16px;
+}
+
+h1 {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.list {
+  display: inline-block;
   padding: 20px 25px;
+  vertical-align: text-top;
+}
+
+.form label{
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+/* Estilos de la lista */
+
+.list {
+  width: 400px;
+  margin: 3vh;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+}
+
+.list h2 {
+  font-size: 24px;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 10px;
+}
+
+.list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list li {
+  background-color: #fff;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 18px;
+  color: #555;
+  transition: background-color 0.3s ease;
+}
+
+.list li:hover {
+  background-color: #f1f1f1;
+}
+
+.list li:before {
+  content: "•";
+  color: #ff6347;
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.list li:last-child {
+  margin-bottom: 0;
 }

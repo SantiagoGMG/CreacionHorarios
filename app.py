@@ -7,6 +7,8 @@ app = Flask(__name__)
 # Ruta de los archivos JSON
 rooms_file_path = os.path.join('JSON', 'rooms.JSON')
 meeting_times_file_path = os.path.join('JSON', 'meeting_times.JSON')
+instructors_file_path = os.path.join('JSON', 'instructors.JSON')
+
 
 # Verifica si los archivos JSON existen, si no, crea unos vacíos
 if not os.path.exists(rooms_file_path):
@@ -17,7 +19,6 @@ if not os.path.exists(meeting_times_file_path):
     with open(meeting_times_file_path, 'w') as f:
         json.dump([], f)
         
-instructors_file_path = os.path.join('JSON', 'instructors.JSON')
 
 if not os.path.exists(instructors_file_path):
     with open(instructors_file_path, 'w') as f:
@@ -34,7 +35,7 @@ def index():
         
     with open(instructors_file_path, 'r') as f:
         instructors = json.load(f)
-
+        
     return render_template('index.html', rooms=rooms, meeting_times=meeting_times, instructors=instructors)
 
 @app.route('/submit', methods=['POST'])

@@ -1,0 +1,15 @@
+[
+    {
+      "name": "Elaboracion de Textos",
+      "building": "Edificio B",
+      "instructor_ids": [0],
+      "classroom": "ITS_1_A"
+    },
+    {
+      "name": "Ingles 1",
+      "building": "Edificio B",
+      "instructor_ids": [1],
+      "classroom": "ITS_1_A"
+    }
+  ]
+  

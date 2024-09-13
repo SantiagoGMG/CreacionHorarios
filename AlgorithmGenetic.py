@@ -9,7 +9,7 @@ MUTATION_RATE = 0.1
 
 
 class Data:
-    # Salones  
+    # Salones
     @classmethod
     def load_rooms(cls):
         with open('JSON/rooms.json', 'r') as f:
@@ -36,8 +36,7 @@ class Data:
         cls.ROOMS = cls.load_rooms()
         cls.MEETING_TIMES = cls.load_meeting_times()
         cls.INSTRUCTORS = cls.load_instructors()
-        
-        
+          
     def __init__(self):
         self._rooms = []
         self._meetingTimes = []
