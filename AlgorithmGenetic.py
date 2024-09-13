@@ -35,7 +35,7 @@ class Data:
         ["I3", "Dr Hector"],
         ["I4", "Gabriel Canto"],
         ["I5", "Dr. Moncada"],
-        ["I6", "Dr. Justino"],  # Da ingles,
+        ["I6", "Dr. Justino"],
         ["I7", "Jose Canepa"],
         ["I8", "Coco"],
         ["I9", "Chadble"],
@@ -262,11 +262,8 @@ class Schedule:
         classes = self.get_classes()
 
         for i in range(len(classes)):
-            # Verifica si la capacidad del aula es menor que el número máximo de estudiantes del curso
-            if (
-                classes[i].get_room().get_seatingCapacity()
-                != classes[i].get_course().salon()
-            ):
+            # Verifica si la room con la que se inicializo es la misma
+            if (classes[i].get_room().get_seatingCapacity()!= classes[i].get_course().salon()):
                 self._numbOfConflicts += 1
 
             for j in range(i + 1, len(classes)):
