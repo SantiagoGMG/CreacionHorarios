@@ -1,0 +1,17 @@
+[
+    {"room_id": "1", "meeting": "Lunes 07:00 - 9:00"},
+    {"room_id": "1", "meeting": "Lunes 9:00 - 11:00"},
+    {"room_id": "1", "meeting": "Lunes 11:00 - 13:00"},
+    {"room_id": "2", "meeting": "Martes 07:00 - 9:00"},
+    {"room_id": "2", "meeting": "Martes 9:00 - 11:00"},
+    {"room_id": "2", "meeting": "Martes 11:00 - 13:00"},
+    {"room_id": "3", "meeting": "Miércoles 07:00 - 9:00"},
+    {"room_id": "3", "meeting": "Miércoles 9:00 - 11:00"},
+    {"room_id": "3", "meeting": "Miércoles 11:00 - 13:00"},
+    {"room_id": "4", "meeting": "Jueves 07:00 - 9:00"},
+    {"room_id": "4", "meeting": "Jueves 9:00 - 11:00"},
+    {"room_id": "4", "meeting": "Jueves 11:00 - 13:00"},
+    {"room_id": "5", "meeting": "Viernes 07:00 - 9:00"},
+    {"room_id": "5", "meeting": "Viernes 9:00 - 11:00"},
+    {"room_id": "5", "meeting": "Viernes 11:00 - 13:00"}
+]

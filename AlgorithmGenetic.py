@@ -1,5 +1,6 @@
 import prettytable as prettytable
 import random as rnd
+import json
 
 POPULATION_SIZE = 50
 NUMB_OF_ELITE_SCHEDULES = 1
@@ -8,45 +9,35 @@ MUTATION_RATE = 0.1
 
 
 class Data:
-    # salones
-    ROOMS = [["R1", "ITS_1_A"], ["R2", "ISC_1_A"]]
-    # horas del dia
-    MEETING_TIMES = [
-        ["1", "Lunes 07:00 - 9:00"],
-        ["1", "Lunes 9:00 - 11:00"],
-        ["1", "Lunes 11:00 - 13:00"],
-        ["2", "Martes 07:00 - 9:00"],
-        ["2", "Martes 9:00 - 11:00"],
-        ["2", "Martes 11:00 - 13:00"],
-        ["3", "Miercoles 07:00 - 9:00"],
-        ["3", "Miercoles 9:00 - 11:00"],
-        ["3", "Miercoles 11:00 - 13:00"],
-        ["4", "Jueves 07:00 - 9:00"],
-        ["4", "Jueves 9:00 - 11:00"],
-        ["4", "Jueves 11:00 - 13:00"],
-        ["5", "Viernes 07:00 - 9:00"],
-        ["5", "Viernes 9:00 - 11:00"],
-        ["5", "Viernes 11:00 - 13:00"],
-    ]
-    # maestros
-    INSTRUCTORS = [
-        ["I1", "Dr Joel"],
-        ["I2", "Mr. Julio"],
-        ["I3", "Dr Hector"],
-        ["I4", "Gabriel Canto"],
-        ["I5", "Dr. Moncada"],
-        ["I6", "Dr. Justino"],
-        ["I7", "Jose Canepa"],
-        ["I8", "Coco"],
-        ["I9", "Chadble"],
-        ["I10", "Buscando"],
-        ["I11", "Buscando2"],
-        ["I12", "Wicho"],
-        ["I13", "Santy"],
-        ["I14", "Sebas"],
-        ["I15", "Interian"],
-    ]
-
+    # Salones  
+    @classmethod
+    def load_rooms(cls):
+        with open('JSON/rooms.json', 'r') as f:
+            room_data = json.load(f)
+        return [[room['room_number'], room['room_name']] for room in room_data]
+    
+    # Horarios
+    @classmethod
+    def load_meeting_times(cls):
+        with open('JSON/meeting_times.json', 'r') as f:
+            meeting_data = json.load(f)
+        return [[meeting['room_id'], meeting['meeting']] for meeting in meeting_data]
+    
+    # Instructores
+    @classmethod
+    def load_instructors(cls):
+        with open('JSON/instructors.json', 'r') as f:
+            instructor_data = json.load(f)
+        return [[instructor['id'], instructor['name']] for instructor in instructor_data]
+    
+    # Inicializar
+    @classmethod
+    def initialize(cls):
+        cls.ROOMS = cls.load_rooms()
+        cls.MEETING_TIMES = cls.load_meeting_times()
+        cls.INSTRUCTORS = cls.load_instructors()
+        
+        
     def __init__(self):
         self._rooms = []
         self._meetingTimes = []
@@ -211,6 +202,7 @@ class Data:
     def get_numberOfClasses(self):
         return self._numberOfClasses
 
+Data.initialize()
 
 class Schedule:
     def __init__(self):
@@ -262,8 +254,11 @@ class Schedule:
         classes = self.get_classes()
 
         for i in range(len(classes)):
-            # Verifica si la room con la que se inicializo es la misma
-            if (classes[i].get_room().get_seatingCapacity()!= classes[i].get_course().salon()):
+            # Verifica si la capacidad del aula es menor que el número máximo de estudiantes del curso
+            if (
+                classes[i].get_room().get_seatingCapacity()
+                != classes[i].get_course().salon()
+            ):
                 self._numbOfConflicts += 1
 
             for j in range(i + 1, len(classes)):
