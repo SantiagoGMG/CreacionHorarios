@@ -9,7 +9,7 @@ MUTATION_RATE = 0.1
 
 class Data:
     # salones
-    ROOMS = [["R1", "R1"], ["R2", "R2"]]
+    ROOMS = [["R1", "ITS_1_A"], ["R2", "ISC_1_A"]]
     # horas del dia
     MEETING_TIMES = [
         ["1", "Lunes 07:00 - 9:00"],
@@ -63,23 +63,23 @@ class Data:
             )
         # Materia -> nombre,edificio, maestro que la pueden dar,Salon
         # Materias de ITS 1
-        course1 = Course("Elaboracion de Textos", "Edificio B", [self._instructors[0]], "R1")
-        course2 = Course("Ingles 1", "Edificio B", [self._instructors[1]], "R1")
-        course3 = Course("Algebra y Geometria", "Edificio B", [self._instructors[2]], "R1")
-        course4 = Course("Metodologia", "Edificio B", [self._instructors[3]], "R1")
-        course5 = Course("Fundamentos de programacion", "Edificio B", [self._instructors[4]], "R1")
-        course6 = Course("Introduccion a la ingenieria", "Edificio B", [self._instructors[5]], "R1")
-        course7 = Course("Quimica", "Edificio B", [self._instructors[6]], "R1")
+        course1 = Course("Elaboracion de Textos", "Edificio B", [self._instructors[0]], "ITS_1_A")
+        course2 = Course("Ingles 1", "Edificio B", [self._instructors[1]], "ITS_1_A")
+        course3 = Course("Algebra y Geometria", "Edificio B", [self._instructors[2]], "ITS_1_A")
+        course4 = Course("Metodologia", "Edificio B", [self._instructors[3]], "ITS_1_A")
+        course5 = Course("Fundamentos de programacion", "Edificio B", [self._instructors[4]], "ITS_1_A")
+        course6 = Course("Introduccion a la ingenieria", "Edificio B", [self._instructors[5]], "ITS_1_A")
+        course7 = Course("Quimica", "Edificio B", [self._instructors[6]], "ITS_1_A")
 
         # Materias de ISC 1  8-15
-        course8 = Course("Algebra Superior", "Edificio C", [self._instructors[7]], "R2")
-        course9 = Course("Geometria", "Edificio C", [self._instructors[8]], "R2")
-        course10 = Course("Expresion Grafica", "Edificio C", [self._instructors[9]], "R2")
-        course11 = Course("Logica de la programacion", "Edificio C", [self._instructors[10]], "R2")
-        course12 = Course( "Calculo diferencial", "Edificio C", [self._instructors[11]], "R2")
-        course13 = Course( "Elaboracion de Textos", "Edificio C", [self._instructors[12]], "R2")
-        course14 = Course("Ingles 1", "Edificio C", [self._instructors[13]], "R2")
-        course15 = Course( "Introduccion a la ingenieria", "Edificio C", [self._instructors[14]], "R2")
+        course8 = Course("Algebra Superior", "Edificio C", [self._instructors[7]], "ISC_1_A")
+        course9 = Course("Geometria", "Edificio C", [self._instructors[8]], "ISC_1_A")
+        course10 = Course("Expresion Grafica", "Edificio C", [self._instructors[9]], "ISC_1_A")
+        course11 = Course("Logica de la programacion", "Edificio C", [self._instructors[10]], "ISC_1_A")
+        course12 = Course( "Calculo diferencial", "Edificio C", [self._instructors[11]], "ISC_1_A")
+        course13 = Course( "Elaboracion de Textos", "Edificio C", [self._instructors[12]], "ISC_1_A")
+        course14 = Course("Ingles 1", "Edificio C", [self._instructors[13]], "ISC_1_A")
+        course15 = Course( "Introduccion a la ingenieria", "Edificio C", [self._instructors[14]], "ISC_1_A")
         # course16 = Course("Materia extra","Edificio C", [self._instructors[9]], "R2")
         # Se crean los cursos
         self._courses = [
