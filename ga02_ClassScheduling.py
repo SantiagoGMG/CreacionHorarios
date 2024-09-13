@@ -582,20 +582,26 @@ class DisplayMgr:
     def print_schedule_as_table(self, schedule):
         classes = schedule.get_classes()
         classes_by_day = {}
-        
+
+        # ordenar clases por dia
         for c in classes:
             day = c.get_meetingTime().get_id()
             if day not in classes_by_day:
                 classes_by_day[day] = []
             classes_by_day[day].append(c)
-        
-        for day, day_classes in classes_by_day.items():
+
+        # ordenar dias por su id, para que se impriman en orden
+        for day in sorted(classes_by_day.keys()):
+            day_classes = classes_by_day[day]
+            
+            # ordenar las clases por hora para cada dia
             day_classes.sort(key=lambda x: x.get_meetingTime().get_time())
             
             print(f"\nDay {day}")
             table = prettytable.PrettyTable(
                 ["Time", "Course", "Room", "Instructor"]
             )
+            
             for c in day_classes:
                 table.add_row([
                     c.get_meetingTime().get_time(),
@@ -603,7 +609,10 @@ class DisplayMgr:
                     f"{c.get_room().get_number()} ({c.get_room().get_seatingCapacity()})",
                     f"{c.get_instructor().get_name()} ({c.get_instructor().get_id()})"
                 ])
+            
+            # Print the table for the current day
             print(table)
+
 
 
 data = Data()
