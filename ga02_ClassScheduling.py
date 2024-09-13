@@ -327,17 +327,33 @@ class DisplayMgr:
         for i in range(0, len(schedules)):
             table1.add_row([str(i), round(schedules[i].get_fitness(),3), schedules[i].get_numbOfConflicts(), schedules[i].__str__()])
         print(table1)
+
     def print_schedule_as_table(self, schedule):
         classes = schedule.get_classes()
-        table = prettytable.PrettyTable(['Class #', 'Dept', 'Course (number, max # of students)', 'Room (Capacity)', 'Instructor (Id)',  'Meeting Time (Id)'])
-        for i in range(0, len(classes)):
-            table.add_row([str(i), classes[i].get_dept().get_name(), classes[i].get_course().get_name() + " (" +
-                           classes[i].get_course().get_number() + ", " +
-                           str(classes[i].get_course().salon()) +")",
-                           classes[i].get_room().get_number() + " (" + str(classes[i].get_room().get_seatingCapacity()) + ")",
-                           classes[i].get_instructor().get_name() +" (" + str(classes[i].get_instructor().get_id()) +")",
-                           classes[i].get_meetingTime().get_time() +" (" + str(classes[i].get_meetingTime().get_id()) +")"])
-        print(table)
+        classes_by_day = {}
+        
+        for c in classes:
+            day = c.get_meetingTime().get_id()
+            if day not in classes_by_day:
+                classes_by_day[day] = []
+            classes_by_day[day].append(c)
+        
+        for day, day_classes in classes_by_day.items():
+            day_classes.sort(key=lambda x: x.get_meetingTime().get_time())
+            
+            print(f"\nDay {day}")
+            table = prettytable.PrettyTable(
+                ["Time", "Course", "Room", "Instructor"]
+            )
+            for c in day_classes:
+                table.add_row([
+                    c.get_meetingTime().get_time(),
+                    f"{c.get_course().get_name()} ({c.get_course().get_number()}, {c.get_course().salon()})",
+                    f"{c.get_room().get_number()} ({c.get_room().get_seatingCapacity()})",
+                    f"{c.get_instructor().get_name()} ({c.get_instructor().get_id()})"
+                ])
+            print(table)
+            
 data = Data()
 displayMgr = DisplayMgr()
 displayMgr.print_available_data()
