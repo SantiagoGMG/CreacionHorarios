@@ -3,7 +3,7 @@ import random as rnd
 
 POPULATION_SIZE = 50
 NUMB_OF_ELITE_SCHEDULES = 1
-TOURNAMENT_SELECTION_SIZE = 3
+TOURNAMENT_SELECTION_SIZE = 15
 MUTATION_RATE = 0.1
 
 
@@ -45,6 +45,12 @@ class Data:
         ["I13", "Santy"],
         ["I14", "Sebas"],
         ["I15", "Interian"],
+        ["I16", "Contrato1"],
+        ["I17", "Contrato2"],
+        ["I18","Contrato3"],
+        ["I19", "Contrato4"],
+        ["I20", "Contrato5"],
+        ["I21","Contrato6"]
     ]
 
     def __init__(self):
@@ -80,7 +86,17 @@ class Data:
         course13 = Course( "Elaboracion de Textos", "Edificio C", [self._instructors[12]], "ISC_1_A")
         course14 = Course("Ingles 1", "Edificio C", [self._instructors[13]], "ISC_1_A")
         course15 = Course( "Introduccion a la ingenieria", "Edificio C", [self._instructors[14]], "ISC_1_A")
-        # course16 = Course("Materia extra","Edificio C", [self._instructors[9]], "R2")
+        
+        course16 = Course("Algebra Superior", "Edificio C", [self._instructors[19]], "ISC_1_B")
+        course17 = Course("Geometria", "Edificio C", [self._instructors[16]], "ISC_1_B")
+        course18 = Course("Expresion Grafica", "Edificio C", [self._instructors[17]], "ISC_1_B")
+        course19 = Course("Logica de la programacion", "Edificio C", [self._instructors[18]], "ISC_1_B")
+        course20 = Course( "Calculo diferencial", "Edificio C", [self._instructors[15]], "ISC_1_B")
+        course21 = Course( "Elaboracion de Textos", "Edificio C", [self._instructors[12]], "ISC_1_B")
+        course22 = Course("Ingles 1", "Edificio C", [self._instructors[13]], "ISC_1_B")
+        course23 = Course( "Introduccion a la ingenieria", "Edificio C", [self._instructors[20]], "ISC_1_B")
+
+
         # Se crean los cursos
         self._courses = [
             course1,
@@ -98,6 +114,14 @@ class Data:
             course13,
             course14,
             course15,
+            course16,
+            course17,
+            course18,
+            course19,
+            course20,
+            course21,
+            course22,
+            course23
         ]
         # grupo con los cursos que se dan
         dept0 = Department(
@@ -144,22 +168,22 @@ class Data:
         dept2 = Department(
             "ISC_1_B",
             [
-                course8,
-                course8,
-                course9,
-                course9,
-                course10,
-                course10,
-                course11,
-                course11,
-                course12,
-                course12,
-                course13,
-                course13,
-                course14,
-                course14,
-                course15,
-                course15,
+                course16,
+                course16,
+                course17,
+                course17,
+                course18,
+                course18,
+                course19,
+                course19,
+                course20,
+                course20,
+                course21,
+                course21,
+                course22,
+                course22,
+                course23,
+                
             ],
         )  # ,course3])
 
@@ -186,7 +210,7 @@ class Data:
         # dept21 = Department("Contabilidad", [course5, course6])
         # dept22 = Department("Lenguaje de programacion 2", [course5, course6])
         # dept23 = Department("Matematicas para la computacion", [course5, course6])
-        self._depts = [dept0]  # , dept1,dept2
+        self._depts = [dept0, dept1]  # , dept1,dept2 , dept2
         # self._depts = [dept1, dept2, dept3,dept4, dept5,dept6, dept7]#,dept8, dept9, dept10,dept11, dept12]
         # dept13, dept14, dept15,dept16, dept17,dept18, dept19,dept20, dept21, dept22,dept23]
         self._numberOfClasses = 0
